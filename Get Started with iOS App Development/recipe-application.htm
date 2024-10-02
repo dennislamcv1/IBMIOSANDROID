@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>recipe-application</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/stylesheets/template.css" />
+  <script>
+  // Your JavaScript for adding copy buttons
+  document.addEventListener('DOMContentLoaded', function() {
+      const codeBlocks = document.querySelectorAll('pre code');
+      codeBlocks.forEach(function(codeBlock) {
+          const button = document.createElement('button');
+          const img = document.createElement('img');
+          const imgcontainer = document.createElement('div');
+          button.className = 'copy-button image-button';
+          button.type = 'button';
+          img.setAttribute('src','https://github.com/user-attachments/assets/3a8dd30c-9309-4bcb-b62b-20a917e8f9b8');
+          img.setAttribute('class','icon');
+
+          
+          imgcontainer.setAttribute('style','display:flex;flex-direction: row;margin-left:auto')
+          button.appendChild(img);
+          imgcontainer.appendChild(button);
+          codeBlock.parentNode.appendChild(imgcontainer);
+          codeBlock.parentNode.setAttribute('style','display:flex;flex-direction:column');
+
+          button.addEventListener('click', function() {
+              const code = codeBlock.innerText;
+              navigator.clipboard.writeText(code).then(function() {
+                  img.setAttribute('class','iconclick');
+
+                  setTimeout(function() {
+                      img.setAttribute('class','icon')
+                  }, 250);
+              }).catch(function(err) {
+                  button.innerText = 'Error';
+              });
+          });
+      });
+  });
+  </script>
+</head>
+<body>
+<p><link href="/style.css" rel="stylesheet"></link></p>
+<div style="margin:50px;">
+<p><img src="../../../images/SKTedtech_360.png" width="150"/></p>
+<h1 id="final-project-create-a-simple-recipe-app-in-swiftui">Final
+Project: Create a Simple Recipe App in SwiftUI</h1>
+<p>Estimated time: <b>60</b> minutes</p>
+<p>Welcome to the final project on creating a simple recipe app in
+SwiftUI. The final result would look something like this:</p>
+<p><img src="../../../images/v1/final/recipe-final.png" width="500"></p>
+<p>The user is shown a <code>List</code> of dishes when they first start
+the app. The user can click any row and the recipe of that dish is
+displayed. The detail page also shows the serving size, time to cook the
+dish, and the total time including prep time along with the list of
+ingredients and directions for cooking the dish. The user is able to go
+back to the main screen by using the <code>Recipes</code> back button on
+top of the screen.</p>
+<h2 id="objectives">Objectives</h2>
+<ul>
+<li>Create a simple recipe app using Swift and SwiftUI.</li>
+<li>Display a list of recipes.</li>
+<li>Show recipe details when it is selected.</li>
+<li>Use navigation views to swtich between the screens.</li>
+<li>Run the app in the Xcode simulator.</li>
+</ul>
+<h2 id="running-the-lab">Running the lab</h2>
+<p>This is an instructional lab that does not require a Skills Network
+lab environment. You will follow this lab on your local machine using
+Xcode.</p>
+<h2 id="key-widgets-used-in-the-project">Key widgets used in the
+project</h2>
+<ul>
+<li><strong>NavigationView</strong>: A container that enables navigation
+between views.</li>
+<li><strong>List</strong>: A view that displays a scrollable list of
+data.</li>
+<li><strong>NavigationLink</strong>: A link that navigates to a
+destination view.</li>
+<li><strong>ScrollView</strong>: A view that enables scrolling of its
+content.</li>
+<li><strong>VStack</strong>: A view that arranges its children in a
+vertical line.</li>
+<li><strong>ZStack</strong>: A view that overlays its children on top of
+each other.</li>
+<li><strong>HStack</strong>: A view that arranges its children in a
+horizontal line.</li>
+<li><strong>Image</strong>: A view that displays an image.</li>
+<li><strong>Text</strong>: A view that displays one or more lines of
+text.</li>
+</ul>
+<h2 id="recap">Recap</h2>
+<p>In this section, we'll introduce the key technical concepts used in
+the code for our Simple Recipe App. Each concept will be explained with
+a simple code snippet to help you understand its usage.</p>
+<h3 id="navigationview">NavigationView</h3>
+<p>A <code>NavigationView</code> is a container that allows for
+navigation between different views.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>NavigationView <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;Hello, World!&quot;</span><span class="op">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The NavigationView wraps the content and provides navigation
+capabilities. In this example, it contains a simple Text view displaying
+"Hello, World!".</p>
+<h3 id="navigationbartitle">navigationBarTitle</h3>
+<p>The <code>navigationBarTitle</code> modifier sets the title of the
+navigation bar.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>NavigationView <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span>\<span class="st">&quot;Hello, World!</span><span class="sc">\&quot;</span><span class="st">)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>navigationBarTitle<span class="op">(</span><span class="st">&quot;Home&quot;</span><span class="op">)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The navigationBarTitle("Home") modifier sets "Home" as the title of
+the navigation bar.</p>
+<h3 id="contentview">ContentView</h3>
+<p>ContentView is the main view of your SwiftUI application.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ContentView<span class="op">:</span> <span class="dt">View</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">body</span><span class="op">:</span> some View <span class="op">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        Text<span class="op">(</span>\<span class="st">&quot;Hello, World!&quot;</span>\<span class="op">)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>ContentView is a struct that conforms to the View protocol, defining
+the main content of the application.</p>
+<h3 id="list">List</h3>
+<p>A List is used to display a scrollable list of data.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>List <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;Item 1&quot;</span><span class="op">)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;Item 2&quot;</span><span class="op">)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;Item 3&quot;</span><span class="op">)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The List contains multiple Text views. Each Text view represents an
+item in the list.</p>
+<h3 id="closure">Closure</h3>
+<p>Closures are self-contained blocks of functionality that can be
+passed around and used in your code.</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="va">greeting</span> <span class="op">=</span> <span class="op">{</span> <span class="op">(</span>name<span class="op">:</span> String<span class="op">)</span> <span class="cf">in</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    print<span class="op">(</span><span class="st">&quot;Hello, </span><span class="er">\(</span><span class="st">name)!&quot;</span><span class="op">)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>greeting<span class="op">(</span><span class="st">&quot;World&quot;</span><span class="op">)</span></span></code></pre></div>
+<p>In this example, the closure
+<code>{ (name: String) in print("Hello, \(name)!") }</code> is assigned
+to the variable greeting. The <code>in</code> keyword separates the
+parameter <code>name</code> from the body of the closure
+<code>print("Hello, \(name)!")</code>. When
+<code>greeting("World")</code> is called, it prints <strong>"Hello,
+World!"</strong>.</p>
+<h3 id="the-in-keyword">The "in" Keyword</h3>
+<p>The "in" keyword is used to separate the closure parameters from the
+closure body.</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>List<span class="op">([</span><span class="st">&quot;Apple&quot;</span><span class="op">,</span> <span class="st">&quot;Banana&quot;</span><span class="op">,</span> <span class="st">&quot;Cherry&quot;</span><span class="op">],</span> id<span class="op">:</span> \<span class="op">.</span><span class="kw">self</span><span class="op">)</span> <span class="op">{</span> fruit <span class="cf">in</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span>fruit<span class="op">)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>In this example, the <code>List</code> view iterates over an array of
+strings. The closure <code>{ fruit in Text(fruit) }</code> takes each
+element in the array <code>fruit</code> and creates a Text view for it.
+The <code>in</code> keyword separates the parameter <code>fruit</code>
+from the body of the closure <code>Text(fruit)</code>.</p>
+<h3 id="foreach-loop">ForEach loop</h3>
+<p>A ForEach loop iterates over a collection to create multiple
+views.</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ForEach<span class="op">([</span><span class="st">&quot;Apple&quot;</span><span class="op">,</span> <span class="st">&quot;Banana&quot;</span><span class="op">,</span> <span class="st">&quot;Cherry&quot;</span><span class="op">],</span> id<span class="op">:</span> \<span class="op">.</span><span class="kw">self</span><span class="op">)</span> <span class="op">{</span> fruit <span class="cf">in</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span>fruit<span class="op">)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The ForEach loop iterates over an array of strings, creating a Text
+view for each fruit.</p>
+<h3 id="method-chaining">Method chaining</h3>
+<p>Method chaining is the practice of calling multiple methods in a
+single line.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Text<span class="op">(</span><span class="st">&quot;Hello, World!&quot;</span><span class="op">)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>font<span class="op">(.</span>largeTitle<span class="op">)</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>foregroundColor<span class="op">(.</span>blue<span class="op">)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>padding<span class="op">()</span></span></code></pre></div>
+<p>The Text view has multiple modifiers chained together, setting the
+font, color, and padding in a single line.</p>
+<h3 id="navigationlink">NavigationLink</h3>
+<p>A NavigationLink is a link that navigates to a destination view when
+tapped.</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>NavigationLink<span class="op">(</span>destination<span class="op">:</span> Text<span class="op">(</span><span class="st">&quot;Detail View&quot;</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;Go to Detail View&quot;</span><span class="op">)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The NavigationLink creates a tappable link. When tapped, it navigates
+to a new view displaying "Detail View".</p>
+<h3 id="scrollview">ScrollView</h3>
+<p>A ScrollView enables scrolling of its content, which is useful for
+displaying long content.</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ScrollView <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;This is a long text that needs scrolling.&quot;</span><span class="op">)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The ScrollView allows its content to be scrollable. In this example,
+it contains a Text view with a long text.</p>
+<h3 id="vstack">VStack</h3>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>VStack <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;Item 1&quot;</span><span class="op">)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;Item 2&quot;</span><span class="op">)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;Item 3&quot;</span><span class="op">)</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The VStack stacks its children vertically. In this example, it
+contains multiple Text views arranged in a vertical line.</p>
+<h3 id="zstack">ZStack</h3>
+<p>A ZStack overlays its children on top of each other.</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ZStack <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    Color<span class="op">.</span>blue</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;Overlay Text&quot;</span><span class="op">)</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>foregroundColor<span class="op">(.</span>white<span class="op">)</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>In this example, a blue color view is at the back, and a Text view is
+overlaid on top of it.</p>
+<h3 id="hstack">HStack</h3>
+<p>An HStack arranges its children in a horizontal line.</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>HStack <span class="op">{</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;Left&quot;</span><span class="op">)</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    Spacer<span class="op">()</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span><span class="st">&quot;Right&quot;</span><span class="op">)</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>In this example, the text, spacer, and text are arranged
+horizontally. The Spacer adds space between the two Text views, pushing
+them to the left and right edges.</p>
+<h3 id="image">Image</h3>
+<p>An Image view displays an image.</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Image<span class="op">(</span>systemName<span class="op">:</span> <span class="st">&quot;star&quot;</span><span class="op">)</span></span></code></pre></div>
+<p>In this example, it displays a star icon from the system-provided SF
+symbols.</p>
+<h2 id="high-level-ux">High level UX</h2>
+<p>Let's discuss how this screen can be laid out using the final screens
+provided at the start of the lab.</p>
+<h3 id="recipe-list-screen">Recipe list screen</h3>
+<p>This screen shows a <code>List</code> view populated with the recipe
+titles. The list view is wrapped inside a <code>NavigationView</code>
+and each item in the list is a <code>NavigationLink</code>.</p>
+<p><img src="../../../images/v1/final/recipe-list-ux.png" width="500"></p>
+<p>The code would look something like this:</p>
+<pre><code>NavigationView {
+    List(SampleData.items) { item in
+        NavigationLink(destination: RecipeDetailView(recipe: item)) {
+            Text(&quot;the name of the recipe&quot;)
+        }
+    }
+    .navigationBarTitle(&quot;Recipes&quot;)
+}</code></pre>
+<p>You will replace <code>item</code> with the structure containing all
+the recipes in this lab. - SampleData: Contains all the data. -
+destination: Tells the app where to go when the user clicks on the link.
+- navigationBarTitle: Sets the title of the whole view.</p>
+<h3 id="recipe-detail-screen">Recipe detail screen</h3>
+<p>This screen uses a few layouts like HStack, VStack, and ZStack nested
+within each other. It helps to draw rectangles on the different stacks
+before you start coding to understand the structure.</p>
+<p><img src="../../../images/v1/final/recipe-details-ux.png" width="500"></p>
+<p>The architecture can be written in this tree structure:</p>
+<pre><code>- Scrollview
+   - VStack
+      - ZStack
+         - image
+         - translucent background
+         - recipe name
+      - HStack
+         - serving size
+         - cook time
+         - total time
+      - VStack
+         - ingredients
+         - intructions</code></pre>
+<p>The high-level code would look something like the following. We will
+fill out the details in this lab.</p>
+<pre><code>var body: some View {
+        ScrollView {
+            VStack() {
+                ZStack() {
+                    // Image for food
+                    // Rectangle for black background
+                    // Text for Recipe name
+                }
+                
+                HStack {
+                    // Label for number of servings
+                    // Spacer
+                    // Label for prep time
+                    // Spacer
+                    // Label for cook Time
+                }
+                
+                VStack(alignment: .leading, spacing: 10) {
+                    // Text for ingredients
+                    // Text of instructions
+                }
+            }
+        }
+        .navigationBarTitle(recipe.name, displayMode: .inline)
+    }
+</code></pre>
+<h2 id="instructions">Instructions</h2>
+<p>We have kept the screenshots to a minimal here as you should be
+familiar with Xcode and SwiftUI by now. However, we provide the complete
+solution at the end of the project if you do get stuck. We would suggest
+trying the instructions on your own and only looking at the solution if
+you are unable to move forward.</p>
+<h3 id="step-1-create-a-new-project">Step 1: Create a new project</h3>
+<ul>
+<li>Open Xcode and create a new SwiftUI project.</li>
+<li>Name your project "SimpleRecipeApp."</li>
+</ul>
+<h3 id="step-2-define-the-recipe-model">Step 2: Define the Recipe
+model</h3>
+<ul>
+<li><p>Create a new Swift file named <code>Recipe.swift</code>.</p></li>
+<li><p>Define the <code>Recipe</code> model.</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">Foundation</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Recipe<span class="op">:</span> <span class="dt">Identifiable</span> <span class="op">{</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">id</span> <span class="op">=</span> UUID<span class="op">()</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">name</span><span class="op">:</span> String</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">ingredients</span><span class="op">:</span> <span class="op">[</span>String<span class="op">]</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">instructions</span><span class="op">:</span> String</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">servings</span><span class="op">:</span> Int</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">prepTime</span><span class="op">:</span> String</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">cookTime</span><span class="op">:</span> String</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">imageName</span><span class="op">:</span> String</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
+</ul>
+<p>This <code>Recipe model</code> uniquely identifies each Recipe
+instance within a collection, such as a List. By conforming to the
+Identifiable protocol, each Recipe instance has a unique identifier
+(id), which SwiftUI uses to differentiate between items in a list or
+other collection views.</p>
+<p><strong>Explanation:</strong> - <code>import Foundation</code>:
+Imports the Foundation framework. -
+<code>struct Recipe: Identifiable</code>: Defines a struct named
+<code>Recipe</code> that conforms to the <code>Identifiable</code>
+protocol. - <code>var id = UUID()</code>: Generates a unique identifier
+for each recipe. - <code>var name: String</code>: Stores the name of the
+recipe. - <code>var ingredients: [String]</code>: Stores the list of
+ingredients. - <code>var instructions: String</code>: Stores the cooking
+instructions. - <code>var servings: Int</code>: Stores the number of
+servings. - <code>var prepTime: String</code>: Stores the preparation
+time. - <code>var cookTime: String</code>: Stores the cooking time. -
+<code>var imageName: String</code>: Stores the name of the image
+file.</p>
+<h3 id="step-3-create-sample-data">Step 3: Create sample data</h3>
+<ul>
+<li><p>Create a new Swift file named
+<code>SampleData.swift</code>.</p></li>
+<li><p>Add some sample recipes. Ideally, this list would be populated
+from a database, but in this simple version of the app, we have decided
+to keep them in a static file.</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">Foundation</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> SampleData <span class="op">{</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">static</span> <span class="kw">let</span> <span class="va">recipes</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Spaghetti Bolognese&quot;</span><span class="op">,</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>            ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Spaghetti&quot;</span><span class="op">,</span> <span class="st">&quot;Ground Beef&quot;</span><span class="op">,</span> <span class="st">&quot;Tomato Sauce&quot;</span><span class="op">,</span> <span class="st">&quot;Onion&quot;</span><span class="op">,</span> <span class="st">&quot;Garlic&quot;</span><span class="op">],</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>            instructions<span class="op">:</span> <span class="st">&quot;Cook the spaghetti. In a separate pan, cook the ground beef with onion and garlic. Add tomato sauce and simmer. Combine with spaghetti.&quot;</span><span class="op">,</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>            servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>            prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>            cookTime<span class="op">:</span> <span class="st">&quot;20 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>            imageName<span class="op">:</span> <span class="st">&quot;spaghetti-bolognese&quot;</span><span class="op">),</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Chicken Curry&quot;</span><span class="op">,</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>            ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Chicken Breast&quot;</span><span class="op">,</span> <span class="st">&quot;Curry Powder&quot;</span><span class="op">,</span> <span class="st">&quot;Coconut Milk&quot;</span><span class="op">,</span> <span class="st">&quot;Onion&quot;</span><span class="op">,</span> <span class="st">&quot;Garlic&quot;</span><span class="op">,</span> <span class="st">&quot;Ginger&quot;</span><span class="op">],</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>            instructions<span class="op">:</span> <span class="st">&quot;Cook the chicken breast with onion, garlic, and ginger. Add curry powder and coconut milk. Simmer until chicken is cooked through.&quot;</span><span class="op">,</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>            servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>            prepTime<span class="op">:</span> <span class="st">&quot;15 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>            cookTime<span class="op">:</span> <span class="st">&quot;25 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>            imageName<span class="op">:</span> <span class="st">&quot;chicken-curry&quot;</span><span class="op">),</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Beef Stroganoff&quot;</span><span class="op">,</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>            ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Beef&quot;</span><span class="op">,</span> <span class="st">&quot;Mushrooms&quot;</span><span class="op">,</span> <span class="st">&quot;Onion&quot;</span><span class="op">,</span> <span class="st">&quot;Sour Cream&quot;</span><span class="op">,</span> <span class="st">&quot;Garlic&quot;</span><span class="op">,</span> <span class="st">&quot;Paprika&quot;</span><span class="op">],</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>            instructions<span class="op">:</span> <span class="st">&quot;Cook the beef with onion and garlic. Add mushrooms and cook until tender. Stir in sour cream and paprika. Serve over egg noodles.&quot;</span><span class="op">,</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>            servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>            prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>            cookTime<span class="op">:</span> <span class="st">&quot;30 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>            imageName<span class="op">:</span> <span class="st">&quot;beef-stroganoff&quot;</span><span class="op">),</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Vegetable Stir Fry&quot;</span><span class="op">,</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>            ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Broccoli&quot;</span><span class="op">,</span> <span class="st">&quot;Carrot&quot;</span><span class="op">,</span> <span class="st">&quot;Bell Pepper&quot;</span><span class="op">,</span> <span class="st">&quot;Soy Sauce&quot;</span><span class="op">,</span> <span class="st">&quot;Garlic&quot;</span><span class="op">,</span> <span class="st">&quot;Ginger&quot;</span><span class="op">],</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>            instructions<span class="op">:</span> <span class="st">&quot;Stir-fry vegetables with garlic and ginger. Add soy sauce and cook until vegetables are tender. Serve with rice.&quot;</span><span class="op">,</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>            servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>            prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>            cookTime<span class="op">:</span> <span class="st">&quot;15 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>            imageName<span class="op">:</span> <span class="st">&quot;vegetable-stir-fry&quot;</span><span class="op">),</span></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Fish Tacos&quot;</span><span class="op">,</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>            ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Fish Fillets&quot;</span><span class="op">,</span> <span class="st">&quot;Tortillas&quot;</span><span class="op">,</span> <span class="st">&quot;Cabbage&quot;</span><span class="op">,</span> <span class="st">&quot;Lime&quot;</span><span class="op">,</span> <span class="st">&quot;Cilantro&quot;</span><span class="op">,</span> <span class="st">&quot;Sour Cream&quot;</span><span class="op">],</span></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>            instructions<span class="op">:</span> <span class="st">&quot;Cook fish fillets and break into pieces. Assemble tacos with tortillas, fish, cabbage, lime, cilantro, and sour cream.&quot;</span><span class="op">,</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>            servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>            prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>            cookTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>            imageName<span class="op">:</span> <span class="st">&quot;fish-tacos&quot;</span><span class="op">),</span></span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Caprese Salad&quot;</span><span class="op">,</span></span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>            ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Tomatoes&quot;</span><span class="op">,</span> <span class="st">&quot;Mozzarella&quot;</span><span class="op">,</span> <span class="st">&quot;Basil&quot;</span><span class="op">,</span> <span class="st">&quot;Olive Oil&quot;</span><span class="op">,</span> <span class="st">&quot;Balsamic Vinegar&quot;</span><span class="op">,</span> <span class="st">&quot;Salt&quot;</span><span class="op">],</span></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>            instructions<span class="op">:</span> <span class="st">&quot;Layer tomatoes and mozzarella. Top with basil, olive oil, balsamic vinegar, and salt.&quot;</span><span class="op">,</span></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>            servings<span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>            prepTime<span class="op">:</span> <span class="st">&quot;5 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>            cookTime<span class="op">:</span> <span class="st">&quot;0 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>            imageName<span class="op">:</span> <span class="st">&quot;caprese-salad&quot;</span><span class="op">),</span></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Pancakes&quot;</span><span class="op">,</span></span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>            ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Flour&quot;</span><span class="op">,</span> <span class="st">&quot;Milk&quot;</span><span class="op">,</span> <span class="st">&quot;Eggs&quot;</span><span class="op">,</span> <span class="st">&quot;Baking Powder&quot;</span><span class="op">,</span> <span class="st">&quot;Salt&quot;</span><span class="op">,</span> <span class="st">&quot;Butter&quot;</span><span class="op">],</span></span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>            instructions<span class="op">:</span> <span class="st">&quot;Mix ingredients to form batter. Cook pancakes on a griddle until golden brown.&quot;</span><span class="op">,</span></span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>            servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>            prepTime<span class="op">:</span> <span class="st">&quot;5 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>            cookTime<span class="op">:</span> <span class="st">&quot;15 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>            imageName<span class="op">:</span> <span class="st">&quot;pancakes&quot;</span><span class="op">),</span></span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Caesar Salad&quot;</span><span class="op">,</span></span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a>            ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Romaine Lettuce&quot;</span><span class="op">,</span> <span class="st">&quot;Croutons&quot;</span><span class="op">,</span> <span class="st">&quot;Parmesan Cheese&quot;</span><span class="op">,</span> <span class="st">&quot;Caesar Dressing&quot;</span><span class="op">],</span></span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a>            instructions<span class="op">:</span> <span class="st">&quot;Toss lettuce with croutons, parmesan cheese, and Caesar dressing.&quot;</span><span class="op">,</span></span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a>            servings<span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a>            prepTime<span class="op">:</span> <span class="st">&quot;5 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a>            cookTime<span class="op">:</span> <span class="st">&quot;0 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a>            imageName<span class="op">:</span> <span class="st">&quot;caesar-salad&quot;</span><span class="op">),</span></span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Chicken Alfredo&quot;</span><span class="op">,</span></span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a>            ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Chicken Breast&quot;</span><span class="op">,</span> <span class="st">&quot;Fettuccine&quot;</span><span class="op">,</span> <span class="st">&quot;Heavy Cream&quot;</span><span class="op">,</span> <span class="st">&quot;Parmesan Cheese&quot;</span><span class="op">,</span> <span class="st">&quot;Butter&quot;</span><span class="op">,</span> <span class="st">&quot;Garlic&quot;</span><span class="op">],</span></span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a>            instructions<span class="op">:</span> <span class="st">&quot;Cook chicken and set aside. Prepare Alfredo sauce with heavy cream, parmesan cheese, butter, and garlic. Combine with cooked fettuccine and chicken.&quot;</span><span class="op">,</span></span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a>            servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a>            prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a>            cookTime<span class="op">:</span> <span class="st">&quot;20 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a>            imageName<span class="op">:</span> <span class="st">&quot;chicken-alfredo&quot;</span><span class="op">),</span></span>
+<span id="cb19-68"><a href="#cb19-68" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Tuna Salad&quot;</span><span class="op">,</span></span>
+<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a>            ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Tuna&quot;</span><span class="op">,</span> <span class="st">&quot;Mayonnaise&quot;</span><span class="op">,</span> <span class="st">&quot;Celery&quot;</span><span class="op">,</span> <span class="st">&quot;Onion&quot;</span><span class="op">,</span> <span class="st">&quot;Lemon Juice&quot;</span><span class="op">,</span> <span class="st">&quot;Salt&quot;</span><span class="op">],</span></span>
+<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a>            instructions<span class="op">:</span> <span class="st">&quot;Mix all ingredients together. Serve on bread or lettuce.&quot;</span><span class="op">,</span></span>
+<span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a>            servings<span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a>            prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a>            cookTime<span class="op">:</span> <span class="st">&quot;0 min&quot;</span><span class="op">,</span></span>
+<span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a>            imageName<span class="op">:</span> <span class="st">&quot;tuna-salad&quot;</span><span class="op">)</span></span>
+<span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a>    <span class="op">]</span></span>
+<span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
+</ul>
+<p><strong>Explanation:</strong> - <code>import Foundation</code>:
+Imports the Foundation framework. - <code>struct SampleData</code>:
+Defines a struct named <code>SampleData</code> to hold the sample
+recipes. - <code>static let recipes = [Recipe]</code>: Defines a static
+constant <code>recipes</code> that holds an array of <code>Recipe</code>
+objects.</p>
+<h3 id="step-4-create-the-main-view">Step 4: Create the Main View</h3>
+<h4 id="add-navigationview">Add NavigationView</h4>
+<ul>
+<li><p>Open the SwiftUI View file named
+<code>ContentView.swift</code>.</p></li>
+<li><p>Delete the contents of the main body.</p>
+<pre><code> var body: some View {
+      // delete all content
+  }</code></pre></li>
+<li><p>Add a <code>NavigationView</code> to the main view.</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ContentView<span class="op">:</span> <span class="dt">View</span> <span class="op">{</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">body</span><span class="op">:</span> some View <span class="op">{</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        NavigationView <span class="op">{</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
+</ul>
+<p><strong>Explanation:</strong> - <code>import SwiftUI</code>: Imports
+the SwiftUI framework. - <code>struct ContentView: View</code>: Defines
+a struct named <code>ContentView</code> that conforms to the
+<code>View</code> protocol. - <code>NavigationView {}</code>: Creates a
+navigation view container.</p>
+<h4 id="add-list">Add List</h4>
+<ul>
+<li><p>Inside the <code>NavigationView</code>, add a <code>List</code>
+to display the recipes.</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ContentView<span class="op">:</span> <span class="dt">View</span> <span class="op">{</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">body</span><span class="op">:</span> some View <span class="op">{</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        NavigationView <span class="op">{</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>            List<span class="op">(</span>SampleData<span class="op">.</span>recipes<span class="op">)</span> <span class="op">{</span> recipe <span class="cf">in</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>navigationBarTitle<span class="op">(</span><span class="st">&quot;Recipes&quot;</span><span class="op">)</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
+</ul>
+<p><strong>Explanation:</strong> -
+<code>List(SampleData.recipes) { recipe in }</code>: Creates a list that
+iterates over the sample recipes.</p>
+<h4 id="add-navigationlink">Add NavigationLink</h4>
+<ul>
+<li><p>Use <code>NavigationLink</code> to navigate to the
+<code>RecipeDetailView</code> when a recipe is selected.</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ContentView<span class="op">:</span> <span class="dt">View</span> <span class="op">{</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">body</span><span class="op">:</span> some View <span class="op">{</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        NavigationView <span class="op">{</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>            List<span class="op">(</span>SampleData<span class="op">.</span>recipes<span class="op">)</span> <span class="op">{</span> recipe <span class="cf">in</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                NavigationLink<span class="op">(</span>destination<span class="op">:</span> RecipeDetailView<span class="op">(</span>recipe<span class="op">:</span> recipe<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>navigationBarTitle<span class="op">(</span><span class="st">&quot;Recipes&quot;</span><span class="op">)</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
+</ul>
+<p><strong>Explanation:</strong> -
+<code>NavigationLink(destination: RecipeDetailView(recipe: recipe)) {}</code>:
+Creates a navigation link to the <code>RecipeDetailView</code> for the
+selected recipe.</p>
+<h4 id="add-text">Add Text</h4>
+<ul>
+<li><p>Display the recipe names using <code>Text</code>.</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ContentView<span class="op">:</span> <span class="dt">View</span> <span class="op">{</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">body</span><span class="op">:</span> some View <span class="op">{</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        NavigationView <span class="op">{</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>            List<span class="op">(</span>SampleData<span class="op">.</span>recipes<span class="op">)</span> <span class="op">{</span> recipe <span class="cf">in</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                NavigationLink<span class="op">(</span>destination<span class="op">:</span> RecipeDetailView<span class="op">(</span>recipe<span class="op">:</span> recipe<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                    Text<span class="op">(</span>recipe<span class="op">.</span>name<span class="op">)</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>navigationBarTitle<span class="op">(</span><span class="st">&quot;Recipes&quot;</span><span class="op">)</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
+</ul>
+<p><strong>Explanation:</strong> - <code>Text(recipe.name)</code>:
+Displays the name of the recipe.</p>
+<h3 id="step-5-create-the-recipe-detail-view">Step 5: Create the Recipe
+Detail View</h3>
+<h4 id="add-scrollview">Add ScrollView</h4>
+<ul>
+<li><p>Create a new SwiftUI View file named
+<code>RecipeDetailView.swift</code>.</p></li>
+<li><p>Add the basic architecture code as we detailed in the beginning
+of this project.</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">SwiftUI</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> RecipeDetailView<span class="op">:</span> <span class="dt">View</span> <span class="op">{</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">recipe</span><span class="op">:</span> Recipe</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">body</span><span class="op">:</span> some View <span class="op">{</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        ScrollView <span class="op">{</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>            VStack<span class="op">(</span>alignment<span class="op">:</span> <span class="op">.</span>leading<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>                ZStack<span class="op">(</span>alignment<span class="op">:</span> <span class="op">.</span>bottomLeading<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>                HStack <span class="op">{</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>                VStack<span class="op">(</span>alignment<span class="op">:</span> <span class="op">.</span>leading<span class="op">,</span> spacing<span class="op">:</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>#Preview <span class="op">{</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>    RecipeDetailView<span class="op">(</span>recipe<span class="op">:</span> SampleData<span class="op">.</span>recipes<span class="op">[</span><span class="dv">0</span><span class="op">])</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
+</ul>
+<p><strong>Explanation:</strong> - <code>var recipe</code>: This is the
+recipe variable displayed on this screen. - The rest of the code simply
+lays out the complete view.</p>
+<h4 id="add-details-for-each-of-the-views">Add details for each of the
+views</h4>
+<ul>
+<li><p>We will add some style elements to each of the view to make it
+look professional. The UX is very subjective and you can definitely come
+up with your own version. You only need to change the body section.
+Leave the rest of the code as is.</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">body</span><span class="op">:</span> some View <span class="op">{</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    ScrollView <span class="op">{</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        VStack<span class="op">(</span>alignment<span class="op">:</span> <span class="op">.</span>leading<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>            ZStack<span class="op">(</span>alignment<span class="op">:</span> <span class="op">.</span>bottomLeading<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>            HStack <span class="op">{</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>padding<span class="op">()</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>background<span class="op">(</span>Color<span class="op">(.</span>systemGray6<span class="op">))</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>cornerRadius<span class="op">(</span><span class="dv">10</span><span class="op">)</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>padding<span class="op">(.</span>horizontal<span class="op">)</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>            VStack<span class="op">(</span>alignment<span class="op">:</span> <span class="op">.</span>leading<span class="op">,</span> spacing<span class="op">:</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>padding<span class="op">()</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>background<span class="op">(</span>Color<span class="op">.</span>white<span class="op">)</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>cornerRadius<span class="op">(</span><span class="dv">10</span><span class="op">)</span></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>shadow<span class="op">(</span>color<span class="op">:</span> <span class="op">.</span>gray<span class="op">,</span> radius<span class="op">:</span> <span class="dv">5</span><span class="op">,</span> x<span class="op">:</span> <span class="dv">0</span><span class="op">,</span> y<span class="op">:</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>padding<span class="op">()</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>background<span class="op">(</span>Color<span class="op">(</span>UIColor<span class="op">.</span>systemGroupedBackground<span class="op">))</span></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>navigationBarTitle<span class="op">(</span>recipe<span class="op">.</span>name<span class="op">,</span> displayMode<span class="op">:</span> <span class="op">.</span>inline<span class="op">)</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Your canvas should look something like this at this time.</p></li>
+</ul>
+<p><img src="../../../images/v1/final/recipe-body-empty.png" width="500"></p>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong>VStack(alignment: .leading)</strong>:
+<ul>
+<li><strong>Purpose</strong>: Arranges its child views in a vertical
+line.</li>
+<li><strong>Alignment</strong>: Aligns the child views to the leading
+edge (left side).</li>
+</ul></li>
+<li><strong>ZStack(alignment: .bottomLeading)</strong>:
+<ul>
+<li><strong>Purpose</strong>: Overlays its child views on top of each
+other</li>
+<li><strong>Alignment</strong>: Aligns the child views to the bottom
+leading edge (bottom-left corner).</li>
+</ul></li>
+<li><strong>HStack</strong>:
+<ul>
+<li><strong>Purpose</strong>: Arranges its child views in a horizontal
+line.</li>
+<li><strong>Modifiers</strong>:
+<ul>
+<li><strong>.padding()</strong>: Adds padding around the
+<code>HStack</code>.</li>
+<li><strong>.background(Color(.systemGray6))</strong>: Sets the
+background color of the <code>HStack</code> to system gray.</li>
+<li><strong>.cornerRadius(10)</strong>: Rounds the corners of the
+<code>HStack</code> with a radius of 10 points.</li>
+<li><strong>.padding(.horizontal)</strong>: Adds horizontal padding
+around the <code>HStack</code>.</li>
+</ul></li>
+</ul></li>
+<li><strong>VStack(alignment: .leading, spacing: 10)</strong>:
+<ul>
+<li><strong>Purpose</strong>: Arranges its child views in a vertical
+line with 10 points of spacing between them.</li>
+<li><strong>Alignment</strong>: Aligns the child views to the leading
+edge (left side).</li>
+<li><strong>Modifiers</strong>:
+<ul>
+<li><strong>.padding()</strong>: Adds padding around the
+<code>VStack</code>.</li>
+<li><strong>.background(Color.white)</strong>: Sets the background color
+of the <code>VStack</code> to white.</li>
+<li><strong>.cornerRadius(10)</strong>: Rounds the corners of the
+<code>VStack</code> with a radius of 10 points.</li>
+<li><strong>.shadow(color: .gray, radius: 5, x: 0, y: 5)</strong>: Adds
+a gray shadow to the <code>VStack</code> with a radius of 5 points and
+an offset of (x: 0, y: 5).</li>
+<li><strong>.padding()</strong>: Adds additional padding around the
+<code>VStack</code>.</li>
+</ul></li>
+</ul></li>
+<li><strong>.background(Color(UIColor.systemGroupedBackground))</strong>:
+<ul>
+<li><strong>Purpose</strong>: Sets the background color of the entire
+<code>VStack</code> to the system grouped background color, which is
+typically used in grouped table views.</li>
+</ul></li>
+</ul>
+<h4 id="add-method-to-load-image">Add method to load image</h4>
+<p>We will write a helper method to load an image given the name of the
+image. The method will return an optional if the image is not found.</p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Helper function to load images</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">loadImage</span><span class="op">(</span><span class="va">named</span><span class="op">:</span> <span class="dt">String</span><span class="op">)</span> -&gt; <span class="fu">UIImage</span>? <span class="op">{</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> UIImage<span class="op">(</span>named<span class="op">:</span> named<span class="op">)</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h4 id="add-sample-images">Add sample images</h4>
+<p>We are providing two images (Spaghetti and Caprese) with this lab.
+Download these images by right clicking on the link and saving to your
+local computer.</p>
+<ul>
+<li><a
+href="../../../images/downloads/spaghetti-bolognese.jpeg">Spaghetti
+Bolognese</a> - save as <code>spaghetti-bolognese.jpeg</code></li>
+<li><a href="../../../images/downloads/caprese-salad.jpeg">Caprese
+Salad</a> - save as <code>caprese-salad.jpeg</code></li>
+</ul>
+<p>Add them to the asset library with the same names. You are welcome to
+use your own images for the rest of the recipes.</p>
+<p><img src="../../../images/v1/final/recipe-asset-manager.png" width="500"></p>
+<h4 id="fill-out-the-zstack">Fill out the ZStack</h4>
+<p>We want to load the recipe image if there is one, otherwise we want
+to add a placeholder image. We achieve this by using an <code>if</code>
+clause. If there is an image, we load it. Otherwise we load the
+<code>placeholder</code> image. We also add some more style to the views
+in the <code>ZStack</code>.</p>
+<p>Let's take a look at the UX again and break down the ZStack into it's
+various components. Remember the first element is behind the second, the
+second behind the third, and so on and so forth.</p>
+<p><img src="../../../images/v1/final/recipe-zstack-ux.png" width="500"></p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ZStack<span class="op">(</span>alignment<span class="op">:</span> <span class="op">.</span>bottomLeading<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">let</span> <span class="va">uiImage</span> <span class="op">=</span> loadImage<span class="op">(</span>named<span class="op">:</span> recipe<span class="op">.</span>imageName<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>        Image<span class="op">(</span>uiImage<span class="op">:</span> uiImage<span class="op">)</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>resizable<span class="op">()</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>scaledToFill<span class="op">()</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>frame<span class="op">(</span>height<span class="op">:</span> <span class="dv">200</span><span class="op">)</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>frame<span class="op">(</span>maxWidth<span class="op">:</span> <span class="op">.</span>infinity<span class="op">)</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>clipped<span class="op">()</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>        Color<span class="op">.</span>black</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>frame<span class="op">(</span>height<span class="op">:</span> <span class="dv">200</span><span class="op">)</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>frame<span class="op">(</span>maxWidth<span class="op">:</span> <span class="op">.</span>infinity<span class="op">)</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    Rectangle<span class="op">()</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>foregroundColor<span class="op">(.</span>black<span class="op">)</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>opacity<span class="op">(</span><span class="fl">0.4</span><span class="op">)</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>frame<span class="op">(</span>height<span class="op">:</span> <span class="dv">40</span><span class="op">)</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>frame<span class="op">(</span>maxWidth<span class="op">:</span> <span class="op">.</span>infinity<span class="op">)</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>    Text<span class="op">(</span>recipe<span class="op">.</span>name<span class="op">)</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>font<span class="op">(.</span>largeTitle<span class="op">)</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>fontWeight<span class="op">(.</span>bold<span class="op">)</span></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>foregroundColor<span class="op">(.</span>white<span class="op">)</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>padding<span class="op">([.</span>leading<span class="op">,</span> <span class="op">.</span>bottom<span class="op">],</span> <span class="dv">10</span><span class="op">)</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>                </span></code></pre></div>
+<p>Your canvas should look something like this at this time.</p>
+<p><img src="../../../images/v1/final/recipe-zstack-finish.png" width="500"></p>
+<p><strong>Explanation:</strong> -
+<code>ZStack(alignment: .bottomLeading) {}</code>: Creates a stack that
+overlays its children, aligned to the bottom leading edge.</p>
+<h4 id="finish-the-horizontal-stack">Finish the horizontal stack</h4>
+<p>Let's work on the HStack. It contains three <code>labels</code>
+separated by <code>spacers</code>. First for number of servings, second
+for cook time, and third for total time.</p>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>HStack <span class="op">{</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    Label<span class="op">(</span><span class="st">&quot;</span><span class="er">\(</span><span class="st">recipe.servings)&quot;</span><span class="op">,</span> systemImage<span class="op">:</span> <span class="st">&quot;person.2.fill&quot;</span><span class="op">)</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    Spacer<span class="op">()</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    Label<span class="op">(</span><span class="st">&quot;</span><span class="er">\(</span><span class="st">recipe.prepTime)&quot;</span><span class="op">,</span> systemImage<span class="op">:</span> <span class="st">&quot;clock&quot;</span><span class="op">)</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    Spacer<span class="op">()</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    Label<span class="op">(</span><span class="st">&quot;</span><span class="er">\(</span><span class="st">recipe.cookTime)&quot;</span><span class="op">,</span> systemImage<span class="op">:</span> <span class="st">&quot;flame&quot;</span><span class="op">)</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>padding<span class="op">()</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>background<span class="op">(</span>Color<span class="op">(.</span>systemGray6<span class="op">))</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>cornerRadius<span class="op">(</span><span class="dv">10</span><span class="op">)</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>padding<span class="op">(.</span>horizontal<span class="op">)</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>                </span></code></pre></div>
+<p>Your canvas should look something like this at this time.</p>
+<p><img src="../../../images/v1/final/recipe-hstack-finish.png" width="500"></p>
+<h4 id="finish-out-the-details-card">Finish out the details card</h4>
+<p>Let's work on the details card that displays the ingredients and the
+instructions.</p>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>VStack<span class="op">(</span>alignment<span class="op">:</span> <span class="op">.</span>leading<span class="op">,</span> spacing<span class="op">:</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                    Text<span class="op">(</span><span class="st">&quot;Ingredients&quot;</span><span class="op">)</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>font<span class="op">(.</span>headline<span class="op">)</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>padding<span class="op">(.</span>bottom<span class="op">,</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>                    ForEach<span class="op">(</span>recipe<span class="op">.</span>ingredients<span class="op">,</span> id<span class="op">:</span> \<span class="op">.</span><span class="kw">self</span><span class="op">)</span> <span class="op">{</span> ingredient <span class="cf">in</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>                        Text<span class="op">(</span><span class="st">&quot;• </span><span class="er">\(</span><span class="st">ingredient)&quot;</span><span class="op">)</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>padding<span class="op">(.</span>vertical<span class="op">,</span> <span class="dv">2</span><span class="op">)</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>                    <span class="op">}</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>                    Text<span class="op">(</span><span class="st">&quot;Instructions&quot;</span><span class="op">)</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>font<span class="op">(.</span>headline<span class="op">)</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>padding<span class="op">(.</span>vertical<span class="op">,</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>                    Text<span class="op">(</span>recipe<span class="op">.</span>instructions<span class="op">)</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>padding<span class="op">()</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>background<span class="op">(</span>Color<span class="op">.</span>white<span class="op">)</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>cornerRadius<span class="op">(</span><span class="dv">10</span><span class="op">)</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>shadow<span class="op">(</span>color<span class="op">:</span> <span class="op">.</span>gray<span class="op">,</span> radius<span class="op">:</span> <span class="dv">5</span><span class="op">,</span> x<span class="op">:</span> <span class="dv">0</span><span class="op">,</span> y<span class="op">:</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>padding<span class="op">()</span></span></code></pre></div>
+<p>Your canvas should look something like this at this time.</p>
+<p><img src="../../../images/v1/final/recipe-vstack-finish.png" width="500"></p>
+<p><strong>Explanation:</strong> -
+<code>if let uiImage = loadImage(named: recipe.imageName) { Image(uiImage: uiImage) } else { Color.black }</code>:
+Loads the image if available, otherwise displays a black background.</p>
+<h3 id="step-6-run-the-application">Step 6: Run the Application</h3>
+<ul>
+<li>Build and run your app in the simulator to see your simple recipe
+app in action.</li>
+</ul>
+<h2 id="next-steps">Next steps</h2>
+<p>Congratulations on completing the Simple Recipe App! Here are some
+ideas and hints for further enhancing your app and exploring more
+SwiftUI features:</p>
+<h3 id="add-search-functionality">Add search functionality</h3>
+<ul>
+<li><strong>Hint</strong>: Use <code>SearchBar</code> to allow users to
+search for recipes.</li>
+<li><strong>Widget</strong>: <code>TextField</code> can be used to
+create a search bar at the top of your list.</li>
+</ul>
+<h3 id="recipe-categories">Recipe categories</h3>
+<ul>
+<li><strong>Hint</strong>: Organize recipes into categories like
+"Appetizers," “Courses," and”."</li>
+<li><strong>Widget</strong>: Use <code>Section</code> within your
+<code>List</code> to group recipes by category.</li>
+</ul>
+<h3 id="improve-the-ui-with-more-widgets">Improve the UI with more
+widgets</h3>
+<ul>
+<li><strong>Hint</strong>: Add ratings or favorite buttons for
+recipes.</li>
+<li><strong>Widgets</strong>: Use <code>Button</code>,
+<code>Image(systemName:)</code> for star ratings, and
+<code>Toggle</code> for favorites.</li>
+</ul>
+<h3 id="add-images-and-style">Add images and style</h3>
+<ul>
+<li><strong>Hint</strong>: Style your app to make it more visually
+appealing.</li>
+<li><strong>Widgets</strong>: Use <code>Color</code>, <code>Font</code>,
+<code>Padding</code>, and <code>Shadow</code> modifiers to enhance the
+UI.</li>
+<li><strong>Example</strong>:
+<code>swift     Text("Recipe Name")         .font(.title)         .padding()         .background(Color.yellow)         .cornerRadius(10)</code></li>
+</ul>
+<h3 id="implement-persistence">Implement persistence</h3>
+<ul>
+<li><strong>Hint</strong>: Save user data like favorite recipes or
+custom recipes.</li>
+<li><strong>Tools</strong>: Use <code>UserDefaults</code> or
+<code>CoreData</code> to store data locally.</li>
+</ul>
+<p>By exploring these features and ideas, you can enhance your Simple
+Recipe App and gain a deeper understanding of SwiftUI. Happy coding!</p>
+<h3 id="final-solution">Final solution</h3>
+<p>Here is the complete solution to this project in case you need
+assistance.</p>
+<details>
+<summary>
+Recipe.swift
+</summary>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">Foundation</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Recipe<span class="op">:</span> <span class="dt">Identifiable</span> <span class="op">{</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">id</span> <span class="op">=</span> UUID<span class="op">()</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">name</span><span class="op">:</span> String</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">ingredients</span><span class="op">:</span> <span class="op">[</span>String<span class="op">]</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">instructions</span><span class="op">:</span> String</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">servings</span><span class="op">:</span> Int</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">prepTime</span><span class="op">:</span> String</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">cookTime</span><span class="op">:</span> String</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">imageName</span><span class="op">:</span> String</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</details>
+<details>
+<summary>
+SampleData.swift
+</summary>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">Foundation</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> SampleData <span class="op">{</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">static</span> <span class="kw">let</span> <span class="va">recipes</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Spaghetti Bolognese&quot;</span><span class="op">,</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>               ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Spaghetti&quot;</span><span class="op">,</span> <span class="st">&quot;Ground Beef&quot;</span><span class="op">,</span> <span class="st">&quot;Tomato Sauce&quot;</span><span class="op">,</span> <span class="st">&quot;Onion&quot;</span><span class="op">,</span> <span class="st">&quot;Garlic&quot;</span><span class="op">],</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>               instructions<span class="op">:</span> <span class="st">&quot;Cook the spaghetti. In a separate pan, cook the ground beef with onion and garlic. Add tomato sauce and simmer. Combine with spaghetti.&quot;</span><span class="op">,</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>               servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>               prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>               cookTime<span class="op">:</span> <span class="st">&quot;20 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>               imageName<span class="op">:</span> <span class="st">&quot;spaghetti-bolognese&quot;</span><span class="op">),</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Chicken Curry&quot;</span><span class="op">,</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>               ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Chicken Breast&quot;</span><span class="op">,</span> <span class="st">&quot;Curry Powder&quot;</span><span class="op">,</span> <span class="st">&quot;Coconut Milk&quot;</span><span class="op">,</span> <span class="st">&quot;Onion&quot;</span><span class="op">,</span> <span class="st">&quot;Garlic&quot;</span><span class="op">,</span> <span class="st">&quot;Ginger&quot;</span><span class="op">],</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>               instructions<span class="op">:</span> <span class="st">&quot;Cook the chicken breast with onion, garlic, and ginger. Add curry powder and coconut milk. Simmer until chicken is cooked through.&quot;</span><span class="op">,</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>               servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>               prepTime<span class="op">:</span> <span class="st">&quot;15 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>               cookTime<span class="op">:</span> <span class="st">&quot;25 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>               imageName<span class="op">:</span> <span class="st">&quot;chicken-curry&quot;</span><span class="op">),</span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Beef Stroganoff&quot;</span><span class="op">,</span></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>               ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Beef&quot;</span><span class="op">,</span> <span class="st">&quot;Mushrooms&quot;</span><span class="op">,</span> <span class="st">&quot;Onion&quot;</span><span class="op">,</span> <span class="st">&quot;Sour Cream&quot;</span><span class="op">,</span> <span class="st">&quot;Garlic&quot;</span><span class="op">,</span> <span class="st">&quot;Paprika&quot;</span><span class="op">],</span></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>               instructions<span class="op">:</span> <span class="st">&quot;Cook the beef with onion and garlic. Add mushrooms and cook until tender. Stir in sour cream and paprika. Serve over egg noodles.&quot;</span><span class="op">,</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>               servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>               prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>               cookTime<span class="op">:</span> <span class="st">&quot;30 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>               imageName<span class="op">:</span> <span class="st">&quot;beef-stroganoff&quot;</span><span class="op">),</span></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Vegetable Stir Fry&quot;</span><span class="op">,</span></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a>               ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Broccoli&quot;</span><span class="op">,</span> <span class="st">&quot;Carrot&quot;</span><span class="op">,</span> <span class="st">&quot;Bell Pepper&quot;</span><span class="op">,</span> <span class="st">&quot;Soy Sauce&quot;</span><span class="op">,</span> <span class="st">&quot;Garlic&quot;</span><span class="op">,</span> <span class="st">&quot;Ginger&quot;</span><span class="op">],</span></span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>               instructions<span class="op">:</span> <span class="st">&quot;Stir-fry vegetables with garlic and ginger. Add soy sauce and cook until vegetables are tender. Serve with rice.&quot;</span><span class="op">,</span></span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a>               servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a>               prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>               cookTime<span class="op">:</span> <span class="st">&quot;15 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>               imageName<span class="op">:</span> <span class="st">&quot;vegetable-stir-fry&quot;</span><span class="op">),</span></span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Fish Tacos&quot;</span><span class="op">,</span></span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>               ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Fish Fillets&quot;</span><span class="op">,</span> <span class="st">&quot;Tortillas&quot;</span><span class="op">,</span> <span class="st">&quot;Cabbage&quot;</span><span class="op">,</span> <span class="st">&quot;Lime&quot;</span><span class="op">,</span> <span class="st">&quot;Cilantro&quot;</span><span class="op">,</span> <span class="st">&quot;Sour Cream&quot;</span><span class="op">],</span></span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a>               instructions<span class="op">:</span> <span class="st">&quot;Cook fish fillets and break into pieces. Assemble tacos with tortillas, fish, cabbage, lime, cilantro, and sour cream.&quot;</span><span class="op">,</span></span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a>               servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a>               prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a>               cookTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a>               imageName<span class="op">:</span> <span class="st">&quot;fish-tacos&quot;</span><span class="op">),</span></span>
+<span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Caprese Salad&quot;</span><span class="op">,</span></span>
+<span id="cb32-41"><a href="#cb32-41" aria-hidden="true" tabindex="-1"></a>               ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Tomatoes&quot;</span><span class="op">,</span> <span class="st">&quot;Mozzarella&quot;</span><span class="op">,</span> <span class="st">&quot;Basil&quot;</span><span class="op">,</span> <span class="st">&quot;Olive Oil&quot;</span><span class="op">,</span> <span class="st">&quot;Balsamic Vinegar&quot;</span><span class="op">,</span> <span class="st">&quot;Salt&quot;</span><span class="op">],</span></span>
+<span id="cb32-42"><a href="#cb32-42" aria-hidden="true" tabindex="-1"></a>               instructions<span class="op">:</span> <span class="st">&quot;Layer tomatoes and mozzarella. Top with basil, olive oil, balsamic vinegar, and salt.&quot;</span><span class="op">,</span></span>
+<span id="cb32-43"><a href="#cb32-43" aria-hidden="true" tabindex="-1"></a>               servings<span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb32-44"><a href="#cb32-44" aria-hidden="true" tabindex="-1"></a>               prepTime<span class="op">:</span> <span class="st">&quot;5 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-45"><a href="#cb32-45" aria-hidden="true" tabindex="-1"></a>               cookTime<span class="op">:</span> <span class="st">&quot;0 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-46"><a href="#cb32-46" aria-hidden="true" tabindex="-1"></a>               imageName<span class="op">:</span> <span class="st">&quot;caprese-salad&quot;</span><span class="op">),</span></span>
+<span id="cb32-47"><a href="#cb32-47" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Pancakes&quot;</span><span class="op">,</span></span>
+<span id="cb32-48"><a href="#cb32-48" aria-hidden="true" tabindex="-1"></a>               ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Flour&quot;</span><span class="op">,</span> <span class="st">&quot;Milk&quot;</span><span class="op">,</span> <span class="st">&quot;Eggs&quot;</span><span class="op">,</span> <span class="st">&quot;Baking Powder&quot;</span><span class="op">,</span> <span class="st">&quot;Salt&quot;</span><span class="op">,</span> <span class="st">&quot;Butter&quot;</span><span class="op">],</span></span>
+<span id="cb32-49"><a href="#cb32-49" aria-hidden="true" tabindex="-1"></a>               instructions<span class="op">:</span> <span class="st">&quot;Mix ingredients to form batter. Cook pancakes on a griddle until golden brown.&quot;</span><span class="op">,</span></span>
+<span id="cb32-50"><a href="#cb32-50" aria-hidden="true" tabindex="-1"></a>               servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb32-51"><a href="#cb32-51" aria-hidden="true" tabindex="-1"></a>               prepTime<span class="op">:</span> <span class="st">&quot;5 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-52"><a href="#cb32-52" aria-hidden="true" tabindex="-1"></a>               cookTime<span class="op">:</span> <span class="st">&quot;15 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-53"><a href="#cb32-53" aria-hidden="true" tabindex="-1"></a>               imageName<span class="op">:</span> <span class="st">&quot;pancakes&quot;</span><span class="op">),</span></span>
+<span id="cb32-54"><a href="#cb32-54" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Caesar Salad&quot;</span><span class="op">,</span></span>
+<span id="cb32-55"><a href="#cb32-55" aria-hidden="true" tabindex="-1"></a>               ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Romaine Lettuce&quot;</span><span class="op">,</span> <span class="st">&quot;Croutons&quot;</span><span class="op">,</span> <span class="st">&quot;Parmesan Cheese&quot;</span><span class="op">,</span> <span class="st">&quot;Caesar Dressing&quot;</span><span class="op">],</span></span>
+<span id="cb32-56"><a href="#cb32-56" aria-hidden="true" tabindex="-1"></a>               instructions<span class="op">:</span> <span class="st">&quot;Toss lettuce with croutons, parmesan cheese, and Caesar dressing.&quot;</span><span class="op">,</span></span>
+<span id="cb32-57"><a href="#cb32-57" aria-hidden="true" tabindex="-1"></a>               servings<span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb32-58"><a href="#cb32-58" aria-hidden="true" tabindex="-1"></a>               prepTime<span class="op">:</span> <span class="st">&quot;5 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-59"><a href="#cb32-59" aria-hidden="true" tabindex="-1"></a>               cookTime<span class="op">:</span> <span class="st">&quot;0 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-60"><a href="#cb32-60" aria-hidden="true" tabindex="-1"></a>               imageName<span class="op">:</span> <span class="st">&quot;caesar-salad&quot;</span><span class="op">),</span></span>
+<span id="cb32-61"><a href="#cb32-61" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Chicken Alfredo&quot;</span><span class="op">,</span></span>
+<span id="cb32-62"><a href="#cb32-62" aria-hidden="true" tabindex="-1"></a>               ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Chicken Breast&quot;</span><span class="op">,</span> <span class="st">&quot;Fettuccine&quot;</span><span class="op">,</span> <span class="st">&quot;Heavy Cream&quot;</span><span class="op">,</span> <span class="st">&quot;Parmesan Cheese&quot;</span><span class="op">,</span> <span class="st">&quot;Butter&quot;</span><span class="op">,</span> <span class="st">&quot;Garlic&quot;</span><span class="op">],</span></span>
+<span id="cb32-63"><a href="#cb32-63" aria-hidden="true" tabindex="-1"></a>               instructions<span class="op">:</span> <span class="st">&quot;Cook chicken and set aside. Prepare Alfredo sauce with heavy cream, parmesan cheese, butter, and garlic. Combine with cooked fettuccine and chicken.&quot;</span><span class="op">,</span></span>
+<span id="cb32-64"><a href="#cb32-64" aria-hidden="true" tabindex="-1"></a>               servings<span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb32-65"><a href="#cb32-65" aria-hidden="true" tabindex="-1"></a>               prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-66"><a href="#cb32-66" aria-hidden="true" tabindex="-1"></a>               cookTime<span class="op">:</span> <span class="st">&quot;20 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-67"><a href="#cb32-67" aria-hidden="true" tabindex="-1"></a>               imageName<span class="op">:</span> <span class="st">&quot;chicken-alfredo&quot;</span><span class="op">),</span></span>
+<span id="cb32-68"><a href="#cb32-68" aria-hidden="true" tabindex="-1"></a>        Recipe<span class="op">(</span>name<span class="op">:</span> <span class="st">&quot;Tuna Salad&quot;</span><span class="op">,</span></span>
+<span id="cb32-69"><a href="#cb32-69" aria-hidden="true" tabindex="-1"></a>               ingredients<span class="op">:</span> <span class="op">[</span><span class="st">&quot;Tuna&quot;</span><span class="op">,</span> <span class="st">&quot;Mayonnaise&quot;</span><span class="op">,</span> <span class="st">&quot;Celery&quot;</span><span class="op">,</span> <span class="st">&quot;Onion&quot;</span><span class="op">,</span> <span class="st">&quot;Lemon Juice&quot;</span><span class="op">,</span> <span class="st">&quot;Salt&quot;</span><span class="op">],</span></span>
+<span id="cb32-70"><a href="#cb32-70" aria-hidden="true" tabindex="-1"></a>               instructions<span class="op">:</span> <span class="st">&quot;Mix all ingredients together. Serve on bread or lettuce.&quot;</span><span class="op">,</span></span>
+<span id="cb32-71"><a href="#cb32-71" aria-hidden="true" tabindex="-1"></a>               servings<span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb32-72"><a href="#cb32-72" aria-hidden="true" tabindex="-1"></a>               prepTime<span class="op">:</span> <span class="st">&quot;10 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-73"><a href="#cb32-73" aria-hidden="true" tabindex="-1"></a>               cookTime<span class="op">:</span> <span class="st">&quot;0 min&quot;</span><span class="op">,</span></span>
+<span id="cb32-74"><a href="#cb32-74" aria-hidden="true" tabindex="-1"></a>               imageName<span class="op">:</span> <span class="st">&quot;tuna-salad&quot;</span><span class="op">)</span></span>
+<span id="cb32-75"><a href="#cb32-75" aria-hidden="true" tabindex="-1"></a>    <span class="op">]</span></span>
+<span id="cb32-76"><a href="#cb32-76" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</details>
+<details>
+<summary>
+RecipeDetailView.swift
+</summary>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">SwiftUI</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> RecipeDetailView<span class="op">:</span> <span class="dt">View</span> <span class="op">{</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">recipe</span><span class="op">:</span> Recipe</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">body</span><span class="op">:</span> some View <span class="op">{</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>        ScrollView <span class="op">{</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>            VStack<span class="op">(</span>alignment<span class="op">:</span> <span class="op">.</span>leading<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>                ZStack<span class="op">(</span>alignment<span class="op">:</span> <span class="op">.</span>bottomLeading<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="kw">let</span> <span class="va">uiImage</span> <span class="op">=</span> loadImage<span class="op">(</span>named<span class="op">:</span> recipe<span class="op">.</span>imageName<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>                        Image<span class="op">(</span>uiImage<span class="op">:</span> uiImage<span class="op">)</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>resizable<span class="op">()</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>scaledToFill<span class="op">()</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>frame<span class="op">(</span>height<span class="op">:</span> <span class="dv">200</span><span class="op">)</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>frame<span class="op">(</span>maxWidth<span class="op">:</span> <span class="op">.</span>infinity<span class="op">)</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>clipped<span class="op">()</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>                    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>                        Color<span class="op">.</span>black</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>frame<span class="op">(</span>height<span class="op">:</span> <span class="dv">200</span><span class="op">)</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>frame<span class="op">(</span>maxWidth<span class="op">:</span> <span class="op">.</span>infinity<span class="op">)</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>                    <span class="op">}</span></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>                    Rectangle<span class="op">()</span></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>foregroundColor<span class="op">(.</span>black<span class="op">)</span></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>opacity<span class="op">(</span><span class="fl">0.4</span><span class="op">)</span></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>frame<span class="op">(</span>height<span class="op">:</span> <span class="dv">40</span><span class="op">)</span></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>frame<span class="op">(</span>maxWidth<span class="op">:</span> <span class="op">.</span>infinity<span class="op">)</span></span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>                    Text<span class="op">(</span>recipe<span class="op">.</span>name<span class="op">)</span></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>font<span class="op">(.</span>largeTitle<span class="op">)</span></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>fontWeight<span class="op">(.</span>bold<span class="op">)</span></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>foregroundColor<span class="op">(.</span>white<span class="op">)</span></span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>padding<span class="op">([.</span>leading<span class="op">,</span> <span class="op">.</span>bottom<span class="op">],</span> <span class="dv">10</span><span class="op">)</span></span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>                HStack <span class="op">{</span></span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>                    Label<span class="op">(</span><span class="st">&quot;</span><span class="er">\(</span><span class="st">recipe.servings)&quot;</span><span class="op">,</span> systemImage<span class="op">:</span> <span class="st">&quot;person.2.fill&quot;</span><span class="op">)</span></span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>                    Spacer<span class="op">()</span></span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>                    Label<span class="op">(</span><span class="st">&quot;</span><span class="er">\(</span><span class="st">recipe.prepTime)&quot;</span><span class="op">,</span> systemImage<span class="op">:</span> <span class="st">&quot;clock&quot;</span><span class="op">)</span></span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>                    Spacer<span class="op">()</span></span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>                    Label<span class="op">(</span><span class="st">&quot;</span><span class="er">\(</span><span class="st">recipe.cookTime)&quot;</span><span class="op">,</span> systemImage<span class="op">:</span> <span class="st">&quot;flame&quot;</span><span class="op">)</span></span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>padding<span class="op">()</span></span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>background<span class="op">(</span>Color<span class="op">(.</span>systemGray6<span class="op">))</span></span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>cornerRadius<span class="op">(</span><span class="dv">10</span><span class="op">)</span></span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>padding<span class="op">(.</span>horizontal<span class="op">)</span></span>
+<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a>                VStack<span class="op">(</span>alignment<span class="op">:</span> <span class="op">.</span>leading<span class="op">,</span> spacing<span class="op">:</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a>                    Text<span class="op">(</span><span class="st">&quot;Ingredients&quot;</span><span class="op">)</span></span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>font<span class="op">(.</span>headline<span class="op">)</span></span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>padding<span class="op">(.</span>bottom<span class="op">,</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a>                    ForEach<span class="op">(</span>recipe<span class="op">.</span>ingredients<span class="op">,</span> id<span class="op">:</span> \<span class="op">.</span><span class="kw">self</span><span class="op">)</span> <span class="op">{</span> ingredient <span class="cf">in</span></span>
+<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a>                        Text<span class="op">(</span><span class="st">&quot;• </span><span class="er">\(</span><span class="st">ingredient)&quot;</span><span class="op">)</span></span>
+<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>padding<span class="op">(.</span>vertical<span class="op">,</span> <span class="dv">2</span><span class="op">)</span></span>
+<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a>                    <span class="op">}</span></span>
+<span id="cb33-57"><a href="#cb33-57" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a>                    Text<span class="op">(</span><span class="st">&quot;Instructions&quot;</span><span class="op">)</span></span>
+<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>font<span class="op">(.</span>headline<span class="op">)</span></span>
+<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span>padding<span class="op">(.</span>vertical<span class="op">,</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a>                    Text<span class="op">(</span>recipe<span class="op">.</span>instructions<span class="op">)</span></span>
+<span id="cb33-63"><a href="#cb33-63" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb33-64"><a href="#cb33-64" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>padding<span class="op">()</span></span>
+<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>background<span class="op">(</span>Color<span class="op">.</span>white<span class="op">)</span></span>
+<span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>cornerRadius<span class="op">(</span><span class="dv">10</span><span class="op">)</span></span>
+<span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>shadow<span class="op">(</span>color<span class="op">:</span> <span class="op">.</span>gray<span class="op">,</span> radius<span class="op">:</span> <span class="dv">5</span><span class="op">,</span> x<span class="op">:</span> <span class="dv">0</span><span class="op">,</span> y<span class="op">:</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>padding<span class="op">()</span></span>
+<span id="cb33-69"><a href="#cb33-69" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb33-70"><a href="#cb33-70" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>background<span class="op">(</span>Color<span class="op">(</span>UIColor<span class="op">.</span>systemGroupedBackground<span class="op">))</span></span>
+<span id="cb33-71"><a href="#cb33-71" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb33-72"><a href="#cb33-72" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>navigationBarTitle<span class="op">(</span>recipe<span class="op">.</span>name<span class="op">,</span> displayMode<span class="op">:</span> <span class="op">.</span>inline<span class="op">)</span></span>
+<span id="cb33-73"><a href="#cb33-73" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb33-74"><a href="#cb33-74" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-75"><a href="#cb33-75" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Helper function to load images</span></span>
+<span id="cb33-76"><a href="#cb33-76" aria-hidden="true" tabindex="-1"></a>    <span class="kw">func</span> <span class="fu">loadImage</span><span class="op">(</span><span class="va">named</span><span class="op">:</span> <span class="dt">String</span><span class="op">)</span> -&gt; <span class="fu">UIImage</span>? <span class="op">{</span></span>
+<span id="cb33-77"><a href="#cb33-77" aria-hidden="true" tabindex="-1"></a>        <span class="kw">return</span> UIImage<span class="op">(</span>named<span class="op">:</span> named<span class="op">)</span></span>
+<span id="cb33-78"><a href="#cb33-78" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb33-79"><a href="#cb33-79" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb33-80"><a href="#cb33-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-81"><a href="#cb33-81" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> RecipeDetailView_Previews<span class="op">:</span> <span class="dt">PreviewProvider</span> <span class="op">{</span></span>
+<span id="cb33-82"><a href="#cb33-82" aria-hidden="true" tabindex="-1"></a>    <span class="kw">static</span> <span class="kw">var</span> <span class="va">previews</span><span class="op">:</span> some View <span class="op">{</span></span>
+<span id="cb33-83"><a href="#cb33-83" aria-hidden="true" tabindex="-1"></a>        RecipeDetailView<span class="op">(</span>recipe<span class="op">:</span> SampleData<span class="op">.</span>recipes<span class="op">[</span><span class="dv">0</span><span class="op">])</span></span>
+<span id="cb33-84"><a href="#cb33-84" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb33-85"><a href="#cb33-85" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</details>
+<details>
+<summary>
+ContentView.swift
+</summary>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">SwiftUI</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ContentView<span class="op">:</span> <span class="dt">View</span> <span class="op">{</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">body</span><span class="op">:</span> some View <span class="op">{</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>        NavigationView <span class="op">{</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>            List<span class="op">(</span>SampleData<span class="op">.</span>recipes<span class="op">)</span> <span class="op">{</span> recipe <span class="cf">in</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                NavigationLink<span class="op">(</span>destination<span class="op">:</span> RecipeDetailView<span class="op">(</span>recipe<span class="op">:</span> recipe<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                    Text<span class="op">(</span>recipe<span class="op">.</span>name<span class="op">)</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>navigationBarTitle<span class="op">(</span><span class="st">&quot;Recipes&quot;</span><span class="op">)</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ContentView_Previews<span class="op">:</span> <span class="dt">PreviewProvider</span> <span class="op">{</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">static</span> <span class="kw">var</span> <span class="va">previews</span><span class="op">:</span> some View <span class="op">{</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>        ContentView<span class="op">()</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</details>
+<p><strong>Author</strong></p>
+<p>UL</p>
+</div>
+</body>
+</html>
