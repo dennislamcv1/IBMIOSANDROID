@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>daily-fitness-tracker</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/stylesheets/template.css" />
+  <script>
+  // Your JavaScript for adding copy buttons
+  document.addEventListener('DOMContentLoaded', function() {
+      const codeBlocks = document.querySelectorAll('pre code');
+      codeBlocks.forEach(function(codeBlock) {
+          const button = document.createElement('button');
+          const img = document.createElement('img');
+          const imgcontainer = document.createElement('div');
+          button.className = 'copy-button image-button';
+          button.type = 'button';
+          img.setAttribute('src','https://github.com/user-attachments/assets/3a8dd30c-9309-4bcb-b62b-20a917e8f9b8');
+          img.setAttribute('class','icon');
+
+          
+          imgcontainer.setAttribute('style','display:flex;flex-direction: row;margin-left:auto')
+          button.appendChild(img);
+          imgcontainer.appendChild(button);
+          codeBlock.parentNode.appendChild(imgcontainer);
+          codeBlock.parentNode.setAttribute('style','display:flex;flex-direction:column');
+
+          button.addEventListener('click', function() {
+              const code = codeBlock.innerText;
+              navigator.clipboard.writeText(code).then(function() {
+                  img.setAttribute('class','iconclick');
+
+                  setTimeout(function() {
+                      img.setAttribute('class','icon')
+                  }, 250);
+              }).catch(function(err) {
+                  button.innerText = 'Error';
+              });
+          });
+      });
+  });
+  </script>
+</head>
+<body>
+<p><link href="/style.css" rel="stylesheet"></link></p>
+<div style="margin:50px;">
+<p><img src="../../../images/SKTedtech_360.png" width="150"/></p>
+<h1 id="final-project-create-a-daily-fitness-tracker-app">Final Project:
+Create a Daily Fitness Tracker App</h1>
+<p><strong>Estimated time:</strong> 60 minutes</p>
+<p>Welcome to this project on creating a Daily Fitness Tracker app in
+Android Studio. This project builds on the learning assets you've viewed
+and the Login, Registration, and Activities labs. So, you have all the
+necessary knowledge to successfully complete this project.</p>
+<p>The final result will look something like this:</p>
+<p><img src="../../../images/v1/final/fitness-tracker-final.png" width="600"></p>
+<h2 id="objectives">Objectives</h2>
+<p>After completing this project, you will be able to:</p>
+<ul>
+<li>Create a user interface for a Daily Fitness Tracker app using
+LinearLayout</li>
+<li>Handle user input and navigation between activities</li>
+<li>Display a toast message for validation</li>
+<li>Calculate and display calories burned based on user input</li>
+</ul>
+<h2 id="key-terms">Key terms</h2>
+<ul>
+<li><strong>Activity</strong>: Single screen with a user interface</li>
+<li><strong>Intent</strong>: Abstract description of an operation to be
+performed</li>
+<li><strong>findViewById</strong>: Method used to retrieve a view by its
+ID</li>
+<li><strong>setOnClickListener</strong>: Method used to set a callback
+for when a view is selected</li>
+<li><strong>startActivity</strong>: Method used to start a new
+activity</li>
+<li><strong>Toast</strong>: Small message that pops up on the
+screen</li>
+<li><strong>Toast.makeText</strong>: Method used to create a toast
+message</li>
+</ul>
+<h2 id="instructions">Instructions</h2>
+<p>Your task is to implement the following user stories in this project.
+A user story is an informal, straightforward description of a software
+feature from the end user's perspective. It aims to convey how the
+feature will offer value to the user.</p>
+<h3 id="user-stories">User stories</h3>
+<ol type="1">
+<li>As a user, I want to enter the number of steps I've taken to track
+my daily activity.</li>
+<li>As a user, I want to enter my weight and age to get a more accurate
+calculation of the calories burned.</li>
+<li>As a user, I want to see the calories I've burned based on my steps,
+weight, and age to monitor my fitness progress.</li>
+<li>As a user, I want to navigate back to the main screen from the
+Calories screen to enter new data if required.</li>
+</ol>
+<h3 id="step-1-create-a-new-project-in-android-studio">Step 1: Create a
+new project in Android Studio</h3>
+<p>Open Android Studio and create a new project with the following
+settings:</p>
+<ul>
+<li>Select <code>Phone and Tablet</code> and
+<code>Empty Views Activity</code> as the project type.</li>
+<li>Set the <code>Name</code> of the application to
+<code>Daily Fitness Tracker</code>.</li>
+<li>Set the <code>Package name</code> to
+<code>com.example.dailyfitnesstracker</code>.</li>
+<li>Set the <code>Language</code> to <code>Java</code>.</li>
+<li>Set the <code>Minimum SDK</code> to <code>API 24</code>.</li>
+<li>Set <code>Build configuration language</code> to
+<code>Groovy DSK</code>.</li>
+</ul>
+<h3 id="step-2-create-the-main-activity-layout">Step 2: Create the main
+activity layout</h3>
+<ol type="1">
+<li><p>Open <code>activity_main.xml</code> in the
+<code>res/layout</code> directory.</p></li>
+<li><p>Add a <code>LinearLayout</code> as the root element with the
+following attributes:</p></li>
+</ol>
+<pre><code>   android:layout_width=&quot;match_parent&quot;
+   android:layout_height=&quot;match_parent&quot;
+   android:orientation=&quot;vertical&quot;
+   android:padding=&quot;16dp&quot;
+   android:gravity=&quot;center&quot;
+   android:background=&quot;@color/green&quot;</code></pre>
+<ol start="3" type="1">
+<li>Add a <code>TextView</code> for the title with the following
+attributes:</li>
+</ol>
+<pre><code>   android:id=&quot;@+id/app_title&quot;
+   android:layout_width=&quot;wrap_content&quot;
+   android:layout_height=&quot;wrap_content&quot;
+   android:gravity=&quot;center&quot;
+   android:padding=&quot;24dp&quot;
+   android:text=&quot;Daily Fitness Tracker&quot;
+   android:textSize=&quot;32sp&quot;
+   android:layout_gravity=&quot;center_horizontal&quot;
+   android:textColor=&quot;@color/white&quot;</code></pre>
+<ol start="4" type="1">
+<li>Add an <code>EditText</code> for user input with the following
+attributes:</li>
+</ol>
+<pre><code>   android:id=&quot;@+id/steps_input&quot;
+   android:layout_width=&quot;match_parent&quot;
+   android:layout_height=&quot;wrap_content&quot;
+   android:hint=&quot;Enter your steps&quot;
+   android:inputType=&quot;number&quot;
+   android:layout_margin=&quot;44dp&quot;
+   android:padding=&quot;16dp&quot;
+   android:textSize=&quot;24sp&quot;
+   android:minHeight=&quot;60dp&quot;
+   android:background=&quot;@color/white&quot;
+   android:textColor=&quot;@color/black&quot;</code></pre>
+<ol start="5" type="1">
+<li>Add a <code>Button</code> for calculation with the following
+attributes:</li>
+</ol>
+<pre><code>   android:id=&quot;@+id/calculate_calories_button&quot;
+   android:layout_width=&quot;match_parent&quot;
+   android:layout_height=&quot;wrap_content&quot;
+   android:layout_margin=&quot;24dp&quot;
+   android:background=&quot;@android:color/black&quot;
+   android:minHeight=&quot;60dp&quot;
+   android:padding=&quot;16dp&quot;
+   android:text=&quot;Calculate Calories&quot;
+   android:textColor=&quot;@color/white&quot;
+   android:textSize=&quot;24sp&quot;</code></pre>
+<h3 id="step-3-create-the-calories-activity-layout">Step 3: Create the
+calories activity layout</h3>
+<ol type="1">
+<li><p>Create a new “Empty Views Activity” named
+<code>CaloriesActivity</code> in the
+<code>com.example.dailyfitnesstracker</code> package. This will create a
+corresponding XML layout file named <code>activity_calories.xml</code>
+in the <code>res/layout</code> directory.</p></li>
+<li><p>Open the <code>activity_calories.xml</code> file in design
+view.</p></li>
+<li><p>Add a <code>LinearLayout</code> as the root element with the
+following attributes:</p></li>
+</ol>
+<pre><code>   android:layout_width=&quot;match_parent&quot;
+   android:layout_height=&quot;match_parent&quot;
+   android:orientation=&quot;vertical&quot;
+   android:padding=&quot;16dp&quot;
+   android:gravity=&quot;center&quot;
+   android:background=&quot;@color/green&quot;</code></pre>
+<ol start="4" type="1">
+<li>Add a <code>TextView</code> for displaying calories burned with the
+following attributes:</li>
+</ol>
+<pre><code>   android:id=&quot;@+id/calories_burned&quot;
+   android:layout_width=&quot;wrap_content&quot;
+   android:layout_height=&quot;wrap_content&quot;
+   android:layout_margin=&quot;12dp&quot;
+   android:padding=&quot;16dp&quot;
+   android:text=&quot;Calories Burned: 0&quot;
+   android:textColor=&quot;@color/white&quot;
+   android:textSize=&quot;34sp&quot;</code></pre>
+<ol start="5" type="1">
+<li>Add an <code>EditText</code> for weight input with the following
+attributes:</li>
+</ol>
+<pre><code>   android:id=&quot;@+id/weight_input&quot;
+   android:layout_width=&quot;match_parent&quot;
+   android:layout_height=&quot;wrap_content&quot;
+   android:layout_margin=&quot;12dp&quot;
+   android:background=&quot;@color/white&quot;
+   android:hint=&quot;Enter your weight (kg)&quot;
+   android:inputType=&quot;number&quot;
+   android:minHeight=&quot;60dp&quot;
+   android:padding=&quot;16dp&quot;
+   android:textColor=&quot;@color/black&quot;
+   android:textSize=&quot;24sp&quot;</code></pre>
+<ol start="6" type="1">
+<li>Add an <code>EditText</code> for age input with the following
+attributes:</li>
+</ol>
+<pre><code>   android:id=&quot;@+id/age_input&quot;
+   android:layout_width=&quot;match_parent&quot;
+   android:layout_height=&quot;wrap_content&quot;
+   android:layout_margin=&quot;12dp&quot;
+   android:background=&quot;@color/white&quot;
+   android:hint=&quot;Enter your age&quot;
+   android:inputType=&quot;number&quot;
+   android:minHeight=&quot;60dp&quot;
+   android:padding=&quot;16dp&quot;
+   android:textColor=&quot;@color/black&quot;
+   android:textSize=&quot;24sp&quot;</code></pre>
+<ol start="7" type="1">
+<li>Add a <code>Button</code> for calculation with the following
+attributes:</li>
+</ol>
+<pre><code>   android:id=&quot;@+id/calculate_button&quot;
+   android:layout_width=&quot;match_parent&quot;
+   android:layout_height=&quot;wrap_content&quot;
+   android:layout_margin=&quot;24dp&quot;
+   android:background=&quot;@android:color/black&quot;
+   android:minHeight=&quot;60dp&quot;
+   android:padding=&quot;16dp&quot;
+   android:text=&quot;Calculate&quot;
+   android:textAlignment=&quot;textStart&quot;
+   android:textColor=&quot;@color/white&quot;
+   android:textSize=&quot;24sp&quot;</code></pre>
+<ol start="8" type="1">
+<li>Add a <code>Button</code> for going back to the main activity with
+the following attributes:</li>
+</ol>
+<pre><code>   android:id=&quot;@+id/back_button&quot;
+   android:layout_width=&quot;match_parent&quot;
+   android:layout_height=&quot;wrap_content&quot;
+   android:layout_margin=&quot;24dp&quot;
+   android:background=&quot;@android:color/black&quot;
+   android:minHeight=&quot;60dp&quot;
+   android:padding=&quot;16dp&quot;
+   android:text=&quot;Back&quot;
+   android:textAlignment=&quot;textStart&quot;
+   android:textColor=&quot;@color/white&quot;
+   android:textSize=&quot;24sp&quot;</code></pre>
+<h3 id="step-4-update-the-mainactivity.java-file">Step 4: Update the
+MainActivity.java file</h3>
+<ol type="1">
+<li><p>In the <code>MainActivity.java</code> file, retrieve the steps
+entered by the user. If no steps are entered, display a toast message
+asking the user to enter steps. If steps are entered, navigate to the
+<code>CaloriesActivity</code> and pass the steps value using an
+Intent.</p></li>
+<li><p>Passing the steps is fairly simple. You already know how to start
+a new activity using the <code>startActivty</code> method. You can send
+information to this activity using the <code>putExtra</code> method on
+the Intent as follows:</p>
+<pre><code> int steps = Integer.parseInt(stepsText);
+ Intent intent = new Intent(MainActivity.this, CaloriesActivity.class);
+ intent.putExtra(&quot;steps&quot;, steps);
+ startActivity(intent);</code></pre></li>
+<li><p>Set up the click listener for the Calculate button to trigger
+this behavior.</p>
+<p><strong>Hint:</strong> Use the
+<code>calculateCaloriesButton.setOnClickListener</code> method as shown
+in the previous labs.</p></li>
+</ol>
+<h3 id="step-5-implement-the-caloriesactivity.java-file">Step 5:
+Implement the CaloriesActivity.java file</h3>
+<ol type="1">
+<li><p>From the <code>CaloriesActivity.java</code> file, retrieve the
+user's weight and age and calculate the calories burned using the given
+formula:</p>
+<pre><code>private double calculateCalories(int weight, int age, int steps) {
+    // MET value for walking at moderate speed (e.g., 3.5 METs)
+    double met = 3.5;
+    // Average step length in miles (e.g., 2,000 steps per mile)
+    double stepsPerMile = 2000;
+    // Convert steps to miles
+    double miles = steps / stepsPerMile;
+    // Adjust the MET value based on age (example adjustment, you can refine this)
+    double ageFactor = 1 - (age - 20) * 0.001;
+    // Calories burned per mile = METs * weight (lbs) * miles * ageFactor
+    double caloriesPerMile = met * weight * miles * ageFactor;
+    return caloriesPerMile;
+}</code></pre>
+<p>You can now call this function in when the Calculate button is
+selected using the <code>calculateButton.setOnClickListener</code>
+method.</p>
+<p>Remember you are getting the number of steps from the previous
+activity in the Intent. Here is how to get the value from the
+Intent:</p>
+<pre><code>int steps = getIntent().getIntExtra(&quot;steps&quot;, 0);</code></pre></li>
+<li><p>Display the result rounded to the nearest whole number.</p>
+<p><strong>Hint:</strong> Use the below code:</p>
+<pre><code>double calories = calculateCalories(weight, age, steps);
+caloriesBurned.setText(&quot;Calories Burned: &quot; + Math.round(calories));</code></pre></li>
+<li><p>Implement a Back button to navigate to the main activity using
+the <code>finish()</code> method.</p>
+<pre><code>backButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            finish(); // Navigate back to MainActivity
+        }
+    });</code></pre></li>
+</ol>
+<h3 id="step-6-update-the-androidmanifest.xml-file">Step 6: Update the
+AndroidManifest.xml file</h3>
+<p>Ensure both activities are declared in
+<code>AndroidManifest.xml</code>:</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">application</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    android:allowBackup=</span><span class="st">&quot;true&quot;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    android:icon=</span><span class="st">&quot;@mipmap/ic_launcher&quot;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    android:label=</span><span class="st">&quot;@string/app_name&quot;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    android:roundIcon=</span><span class="st">&quot;@mipmap/ic_launcher_round&quot;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    android:supportsRtl=</span><span class="st">&quot;true&quot;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    android:theme=</span><span class="st">&quot;@style/AppTheme&quot;</span>&gt;</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">activity</span><span class="ot"> android:name=</span><span class="st">&quot;.CaloriesActivity&quot;</span> /&gt;</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">activity</span><span class="ot"> android:name=</span><span class="st">&quot;.MainActivity&quot;</span>&gt;</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">intent-filter</span>&gt;</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">action</span><span class="ot"> android:name=</span><span class="st">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">category</span><span class="ot"> android:name=</span><span class="st">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">intent-filter</span>&gt;</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">activity</span>&gt;</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">application</span>&gt;</span></code></pre></div>
+<h3 id="step-7-run-the-application">Step 7: Run the application</h3>
+<ol type="1">
+<li>Ensure your Android virtual device (AVD) is set up.</li>
+<li>Select the <strong>Run</strong> button in Android Studio.</li>
+<li>Select your AVD and wait for the application to launch.</li>
+<li>Verify that the main screen appears, and on entering the steps taken
+and selecting <strong>Calculate Calories</strong>, you are taken to the
+Calories screen displaying the calculated calories burned. Ensure that
+the Back button navigates to the main activity and that the toast
+message is displayed if no steps are entered.</li>
+</ol>
+<p>You have now successfully created the Daily Fitness Tracker app with
+a user interface for entering steps, calculating calories burned, and
+navigating between activities.</p>
+<h2 id="whats-next">What's Next</h2>
+<p>Now that you've created the Daily Fitness Tracker app, here are some
+suggestions on what to try next using the Gemini AI available in Android
+Studio:</p>
+<ol type="1">
+<li><strong>Enhance UI/UX</strong>:
+<ul>
+<li>Use Gemini AI to suggest improvements for your app's user interface
+and user experience. Experiment with different layouts, styles, and
+themes to make your app more visually appealing and user-friendly.</li>
+</ul></li>
+<li><strong>Add More Features</strong>:
+<ul>
+<li>Extend the functionality of your app by adding new features, such as
+tracking additional fitness metrics (for example, distance walked,
+active minutes, and so on).</li>
+<li>Use Gemini AI to generate code snippets or provide guidance on how
+to integrate these features seamlessly.</li>
+</ul></li>
+<li><strong>Implement Advanced Calculations</strong>:
+<ul>
+<li>Incorporate more complex algorithms for calculating calories burned,
+taking into account factors like heart rate, activity intensity, and
+duration.</li>
+<li>Use Gemini AI to help optimize your calculations and ensure
+accuracy.</li>
+</ul></li>
+<li><strong>Add Data Persistence</strong>:
+<ul>
+<li>Implement local storage or cloud-based databases to save users'
+fitness data and allow them to track their progress over time.</li>
+<li>Use Gemini AI to suggest the best storage solutions and provide
+sample code for implementation.</li>
+</ul></li>
+</ol>
+<p>By leveraging Gemini AI in Android Studio, you can continue to
+enhance and expand your Daily Fitness Tracker app, making it more robust
+and feature-rich. Happy coding!</p>
+<h2 id="solution">Solution</h2>
+<p>Here are the file contents if you're stuck and want to see my version
+of the final application running.</p>
+<details>
+<summary>
+<ol type="1">
+<li>java/com/example/dailyfitnesstracker/MainActivity.java</li>
+</ol>
+</summary>
+<pre><code>   package com.example.dailyfitnesstracker;
+
+    import android.content.Intent;
+    import android.os.Bundle;
+    import android.view.View;
+    import android.widget.Button;
+    import android.widget.EditText;
+    import android.widget.Toast;
+    import androidx.appcompat.app.AppCompatActivity;
+
+    public class MainActivity extends AppCompatActivity {
+
+        private EditText stepsInput;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            stepsInput = findViewById(R.id.steps_input);
+            Button calculateCaloriesButton = findViewById(R.id.calculate_calories_button);
+
+            calculateCaloriesButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String stepsText = stepsInput.getText().toString();
+                    if (stepsText.isEmpty()) {
+                        Toast.makeText(MainActivity.this, &quot;Please enter your steps&quot;, Toast.LENGTH_SHORT).show();
+                    } else {
+                        int steps = Integer.parseInt(stepsText);
+                        Intent intent = new Intent(MainActivity.this, CaloriesActivity.class);
+                        intent.putExtra(&quot;steps&quot;, steps);
+                        startActivity(intent);
+                    }
+                }
+            });
+        }
+    }
+</code></pre>
+</details>
+<details>
+<summary>
+<ol start="2" type="1">
+<li>res/layout/activity_main.xml</li>
+</ol>
+</summary>
+<pre><code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+   android:layout_width=&quot;match_parent&quot;
+   android:layout_height=&quot;match_parent&quot;
+   android:orientation=&quot;vertical&quot;
+   android:padding=&quot;16dp&quot;
+   android:gravity=&quot;center&quot;
+   android:background=&quot;@color/green&quot;&gt;
+
+   &lt;TextView
+     android:id=&quot;@+id/app_title&quot;
+     android:layout_width=&quot;wrap_content&quot;
+     android:layout_height=&quot;wrap_content&quot;
+     android:gravity=&quot;center&quot;
+     android:padding=&quot;24dp&quot;
+     android:text=&quot;Daily Fitness Tracker&quot;
+     android:textSize=&quot;32sp&quot;
+     android:layout_gravity=&quot;center_horizontal&quot;
+     android:textColor=&quot;@color/white&quot; /&gt;
+
+   &lt;EditText
+     android:id=&quot;@+id/steps_input&quot;
+     android:layout_width=&quot;match_parent&quot;
+     android:layout_height=&quot;wrap_content&quot;
+     android:hint=&quot;Enter your steps&quot;
+     android:inputType=&quot;number&quot;
+     android:layout_margin=&quot;44dp&quot;
+     android:padding=&quot;16dp&quot;
+     android:textSize=&quot;24sp&quot;
+     android:minHeight=&quot;60dp&quot;
+     android:background=&quot;@color/white&quot;
+     android:textColor=&quot;@color/black&quot; /&gt;
+
+   &lt;Button
+     android:id=&quot;@+id/calculate_calories_button&quot;
+     android:layout_width=&quot;match_parent&quot;
+     android:layout_height=&quot;wrap_content&quot;
+     android:layout_margin=&quot;24dp&quot;
+     android:background=&quot;@android:color/black&quot;
+     android:minHeight=&quot;60dp&quot;
+     android:padding=&quot;16dp&quot;
+     android:text=&quot;Calculate Calories&quot;
+     android:textColor=&quot;@color/white&quot;
+     android:textSize=&quot;24sp&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+</details>
+<details>
+<summary>
+<ol start="3" type="1">
+<li>java/com/example/dailyfitnesstracker/CaloriesActivity.java</li>
+</ol>
+</summary>
+<pre><code>package com.example.dailyfitnesstracker;
+
+ import android.os.Bundle;
+ import android.view.View;
+ import android.widget.Button;
+ import android.widget.EditText;
+ import android.widget.TextView;
+ import android.widget.Toast;
+ import androidx.appcompat.app.AppCompatActivity;
+
+ public class CaloriesActivity extends AppCompatActivity {
+    private EditText weightInput;
+    private EditText ageInput;
+    private TextView caloriesBurned;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+           super.onCreate(savedInstanceState);
+           setContentView(R.layout.activity_calories);
+
+           weightInput = findViewById(R.id.weight_input);
+           ageInput = findViewById(R.id.age_input);
+           caloriesBurned = findViewById(R.id.calories_burned);
+
+           Button calculateButton = findViewById(R.id.calculate_button);
+           Button backButton = findViewById(R.id.back_button);
+
+           calculateButton.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   int steps = getIntent().getIntExtra(&quot;steps&quot;, 0);
+                   if (steps == 0) {
+                       Toast.makeText(CaloriesActivity.this, &quot;Please enter steps in the main screen&quot;, Toast.LENGTH_SHORT).show();
+                       finish(); // Navigate back to MainActivity
+                       return;
+                   }
+
+                   int weight = Integer.parseInt(weightInput.getText().toString());
+                   int age = Integer.parseInt(ageInput.getText().toString());
+                   double calories = calculateCalories(weight, age, steps);
+                   caloriesBurned.setText(&quot;Calories Burned: &quot; + Math.round(calories));
+               }
+           });
+
+           backButton.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   finish(); // Navigate back to MainActivity
+               }
+           });
+       }
+
+       private double calculateCalories(int weight, int age, int steps) {
+           // MET value for walking at moderate speed (e.g., 3.5 METs)
+           double met = 3.5;
+           // Average step length in miles (e.g., 2,000 steps per mile)
+           double stepsPerMile = 2000;
+           // Convert steps to miles
+           double miles = steps / stepsPerMile;
+           // Adjust the MET value based on age (example adjustment, you can refine this)
+           double ageFactor = 1 - (age - 20) * 0.001;
+           // Calories burned per mile = METs * weight (lbs) * miles * ageFactor
+           double caloriesPerMile = met * weight * miles * ageFactor;
+           return caloriesPerMile;
+       }
+   }
+</code></pre>
+</details>
+<details>
+<summary>
+<ol start="4" type="1">
+<li>res/layout/activity_calories.xml</li>
+</ol>
+</summary>
+<pre><code>  &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+   &lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+       android:layout_width=&quot;match_parent&quot;
+       android:layout_height=&quot;match_parent&quot;
+       android:orientation=&quot;vertical&quot;
+       android:padding=&quot;16dp&quot;
+       android:gravity=&quot;center&quot;
+       android:background=&quot;@color/green&quot;&gt;
+
+       &lt;TextView
+           android:id=&quot;@+id/calories_burned&quot;
+           android:layout_width=&quot;wrap_content&quot;
+           android:layout_height=&quot;wrap_content&quot;
+           android:layout_margin=&quot;12dp&quot;
+           android:padding=&quot;16dp&quot;
+           android:text=&quot;Calories Burned: 0&quot;
+           android:textColor=&quot;@color/white&quot;
+           android:textSize=&quot;34sp&quot; /&gt;
+
+       &lt;EditText
+           android:id=&quot;@+id/weight_input&quot;
+           android:layout_width=&quot;match_parent&quot;
+           android:layout_height=&quot;wrap_content&quot;
+           android:layout_margin=&quot;12dp&quot;
+           android:background=&quot;@color/white&quot;
+           android:hint=&quot;Enter your weight (lbs)&quot;
+           android:inputType=&quot;number&quot;
+           android:minHeight=&quot;60dp&quot;
+           android:padding=&quot;16dp&quot;
+           android:textColor=&quot;@color/black&quot;
+           android:textSize=&quot;24sp&quot; /&gt;
+
+       &lt;EditText
+           android:id=&quot;@+id/age_input&quot;
+           android:layout_width=&quot;match_parent&quot;
+           android:layout_height=&quot;wrap_content&quot;
+           android:layout_margin=&quot;12dp&quot;
+           android:background=&quot;@color/white&quot;
+           android:hint=&quot;Enter your age&quot;
+           android:inputType=&quot;number&quot;
+           android:minHeight=&quot;60dp&quot;
+           android:padding=&quot;16dp&quot;
+           android:textColor=&quot;@color/black&quot;
+           android:textSize=&quot;24sp&quot; /&gt;
+
+       &lt;Button
+           android:id=&quot;@+id/calculate_button&quot;
+           android:layout_width=&quot;match_parent&quot;
+           android:layout_height=&quot;wrap_content&quot;
+           android:layout_margin=&quot;24dp&quot;
+           android:background=&quot;@android:color/black&quot;
+           android:minHeight=&quot;60dp&quot;
+           android:padding=&quot;16dp&quot;
+           android:text=&quot;Calculate&quot;
+           android:textAlignment=&quot;textStart&quot;
+           android:textColor=&quot;@color/white&quot;
+           android:textSize=&quot;24sp&quot; /&gt;
+
+       &lt;Button
+           android:id=&quot;@+id/back_button&quot;
+           android:layout_width=&quot;match_parent&quot;
+           android:layout_height=&quot;wrap_content&quot;
+           android:layout_margin=&quot;24dp&quot;
+           android:background=&quot;@android:color/black&quot;
+           android:minHeight=&quot;60dp&quot;
+           android:padding=&quot;16dp&quot;
+           android:text=&quot;Back&quot;
+           android:textAlignment=&quot;textStart&quot;
+           android:textColor=&quot;@color/white&quot;
+           android:textSize=&quot;24sp&quot; /&gt;
+   &lt;/LinearLayout&gt;
+</code></pre>
+</details>
+<details>
+<summary>
+<ol start="5" type="1">
+<li>res/values/colors.xml</li>
+</ol>
+</summary>
+<pre><code>    &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+    &lt;resources&gt;
+        &lt;color name=&quot;green&quot;&gt;#4CAF50&lt;/color&gt;
+        &lt;color name=&quot;white&quot;&gt;#FFFFFF&lt;/color&gt;
+        &lt;color name=&quot;black&quot;&gt;#000000&lt;/color&gt;
+    &lt;/resources&gt;
+</code></pre>
+</details>
+<p><strong>Author</strong></p>
+<p>UL</p>
+</div>
+</body>
+</html>
