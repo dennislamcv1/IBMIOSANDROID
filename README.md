@@ -1,5 +1,6 @@
-# IBMMobileDev
-## IBM iOS and Android Mobile App Developer Professional Certificate
+# IBMIOSANDROID
+
+## IBM iOS and Android Mobile App Developer Professional Certificate (14 course series)
 
 The number of smartphone users is set to grow by 1.5 billion (over 30%) by 2029 (Statista). Businesses and startups are itching to reach this audience through engaging mobile apps. This comprehensive IBM Professional Certificate gives you the job-ready, cross-platform skills you need to help land your first mobile app development job. No prior programming experience required.
 
